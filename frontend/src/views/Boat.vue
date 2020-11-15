@@ -1,16 +1,16 @@
 <template>
   <el-table
-    :data="tableData"
+    :data="boats"
     style="width: 100%"
     :row-class-name="tableRowClassName">
     <el-button type="success">ADD</el-button>
     <el-table-column
-      prop="id"
+      prop="boatId"
       label="ID"
       width="180">
     </el-table-column>
     <el-table-column
-      prop="model"
+      prop="name"
       label="Model"
       width="180">
     </el-table-column>
@@ -70,8 +70,8 @@ import boatService from "../services/boatService"
     data() {
       
       return {
-        boats:[]
-      };
+        boats:[],
+      }
     },
     async created(){
     try{
