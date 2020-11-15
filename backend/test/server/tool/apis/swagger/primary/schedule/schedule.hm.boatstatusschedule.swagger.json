@@ -1,0 +1,451 @@
+{
+  "tags": [{
+    "name": "scheduleHasManyboatstatusschedule",
+    "description": "Everything about has many relation"
+  }],
+  "paths": {
+    "/api/v1/schedule/has/boatstatusschedule": {
+      "get": {
+        "tags": [
+          "scheduleHasManyboatstatusschedule"
+        ],
+        "summary": "Get schedule list with boatstatusschedule children",
+        "description": "",
+        "operationId": "scheduleHasManyboatstatusscheduleList",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/schedule/{scheduleId}/boatstatusschedule": {
+      "get": {
+        "tags": [
+          "scheduleHasManyboatstatusschedule"
+        ],
+        "summary": "Find boatstatusschedule list by parent schedule id",
+        "description": "Returns a single schedule",
+        "operationId": "getboatstatusscheduleByscheduleId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "scheduleId",
+            "in": "path",
+            "description": "ID of schedule to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": "object"
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "schedule not found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "scheduleHasManyboatstatusschedule"
+        ],
+        "summary": "Insert boatstatusschedule under a parent schedule",
+        "description": "Returns a single schedule",
+        "operationId": "insertboatstatusscheduleByscheduleId",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "body",
+            "name": "body",
+            "description": "boatstatusschedule object to insert",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "name": "scheduleId",
+            "in": "path",
+            "description": "ID of schedule to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/schedule/{scheduleId}/boatstatusschedule/{boatstatusscheduleId}": {
+      "get": {
+        "tags": [
+          "scheduleHasManyboatstatusschedule"
+        ],
+        "summary": "Get by boatstatusschedule id parent schedule id",
+        "description": "Returns a single schedule",
+        "operationId": "getboatstatusscheduleByIdAndscheduleId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "scheduleId",
+            "in": "path",
+            "description": "ID of parent schedule",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "boatstatusscheduleId",
+            "in": "path",
+            "description": "ID of boatstatusschedule",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": "object"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "scheduleHasManyboatstatusschedule"
+        ],
+        "summary": "Delete by boatstatusschedule id parent schedule id",
+        "description": "Returns a single schedule",
+        "operationId": "deleteboatstatusscheduleByIdAndscheduleId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "scheduleId",
+            "in": "path",
+            "description": "ID of parent schedule",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "boatstatusscheduleId",
+            "in": "path",
+            "description": "ID of cboatstatusschedule",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "scheduleHasManyboatstatusschedule"
+        ],
+        "summary": "Update boatstatusschedule under a parent schedule",
+        "description": "Returns a single schedule",
+        "operationId": "updateboatstatusscheduleByIdAndscheduleId",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "body",
+            "name": "body",
+            "description": "boatstatusschedule object to insert",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "name": "scheduleId",
+            "in": "path",
+            "description": "ID of schedule to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "boatstatusscheduleId",
+            "in": "path",
+            "description": "ID of boatstatusschedule",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/schedule/{scheduleId}/boatstatusschedule/{boatstatusscheduleId}/exists": {
+      "get": {
+        "tags": [
+          "scheduleHasManyboatstatusschedule"
+        ],
+        "summary": "Check row exists by boatstatusschedule id and parent schedule id",
+        "description": "",
+        "operationId": "existsboatstatusscheduleByIdAndscheduleId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "scheduleId",
+            "in": "path",
+            "description": "ID of parent schedule",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "boatstatusscheduleId",
+            "in": "path",
+            "description": "ID of boatstatusschedule",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/schedule/{scheduleId}/boatstatusschedule/findOne": {
+      "get": {
+        "tags": [
+          "scheduleHasManyboatstatusschedule"
+        ],
+        "summary": "Find one boatstatusschedule by parent schedule id and filters",
+        "description": "",
+        "operationId": "findOneboatstatusscheduleByscheduleId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "scheduleId",
+            "in": "path",
+            "description": "ID of parent schedule",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/schedule/{scheduleId}/boatstatusschedule/count": {
+      "get": {
+        "tags": [
+          "scheduleHasManyboatstatusschedule"
+        ],
+        "summary": "Get boatstatusschedule count by parent id and filter",
+        "description": "",
+        "operationId": "getCountWithinscheduleId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "scheduleId",
+            "in": "path",
+            "description": "ID of parent schedule",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {}
+}

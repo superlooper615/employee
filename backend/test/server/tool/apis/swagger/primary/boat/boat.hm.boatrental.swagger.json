@@ -1,0 +1,451 @@
+{
+  "tags": [{
+    "name": "boatHasManyboatrental",
+    "description": "Everything about has many relation"
+  }],
+  "paths": {
+    "/api/v1/boat/has/boatrental": {
+      "get": {
+        "tags": [
+          "boatHasManyboatrental"
+        ],
+        "summary": "Get boat list with boatrental children",
+        "description": "",
+        "operationId": "boatHasManyboatrentalList",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/boat/{boatId}/boatrental": {
+      "get": {
+        "tags": [
+          "boatHasManyboatrental"
+        ],
+        "summary": "Find boatrental list by parent boat id",
+        "description": "Returns a single boat",
+        "operationId": "getboatrentalByboatId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "boatId",
+            "in": "path",
+            "description": "ID of boat to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": "object"
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "boat not found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "boatHasManyboatrental"
+        ],
+        "summary": "Insert boatrental under a parent boat",
+        "description": "Returns a single boat",
+        "operationId": "insertboatrentalByboatId",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "body",
+            "name": "body",
+            "description": "boatrental object to insert",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "name": "boatId",
+            "in": "path",
+            "description": "ID of boat to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/boat/{boatId}/boatrental/{boatrentalId}": {
+      "get": {
+        "tags": [
+          "boatHasManyboatrental"
+        ],
+        "summary": "Get by boatrental id parent boat id",
+        "description": "Returns a single boat",
+        "operationId": "getboatrentalByIdAndboatId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "boatId",
+            "in": "path",
+            "description": "ID of parent boat",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "boatrentalId",
+            "in": "path",
+            "description": "ID of boatrental",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": "object"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "boatHasManyboatrental"
+        ],
+        "summary": "Delete by boatrental id parent boat id",
+        "description": "Returns a single boat",
+        "operationId": "deleteboatrentalByIdAndboatId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "boatId",
+            "in": "path",
+            "description": "ID of parent boat",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "boatrentalId",
+            "in": "path",
+            "description": "ID of cboatrental",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "boatHasManyboatrental"
+        ],
+        "summary": "Update boatrental under a parent boat",
+        "description": "Returns a single boat",
+        "operationId": "updateboatrentalByIdAndboatId",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "body",
+            "name": "body",
+            "description": "boatrental object to insert",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "name": "boatId",
+            "in": "path",
+            "description": "ID of boat to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "boatrentalId",
+            "in": "path",
+            "description": "ID of boatrental",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/boat/{boatId}/boatrental/{boatrentalId}/exists": {
+      "get": {
+        "tags": [
+          "boatHasManyboatrental"
+        ],
+        "summary": "Check row exists by boatrental id and parent boat id",
+        "description": "",
+        "operationId": "existsboatrentalByIdAndboatId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "boatId",
+            "in": "path",
+            "description": "ID of parent boat",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "boatrentalId",
+            "in": "path",
+            "description": "ID of boatrental",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/boat/{boatId}/boatrental/findOne": {
+      "get": {
+        "tags": [
+          "boatHasManyboatrental"
+        ],
+        "summary": "Find one boatrental by parent boat id and filters",
+        "description": "",
+        "operationId": "findOneboatrentalByboatId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "boatId",
+            "in": "path",
+            "description": "ID of parent boat",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/boat/{boatId}/boatrental/count": {
+      "get": {
+        "tags": [
+          "boatHasManyboatrental"
+        ],
+        "summary": "Get boatrental count by parent id and filter",
+        "description": "",
+        "operationId": "getCountWithinboatId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "boatId",
+            "in": "path",
+            "description": "ID of parent boat",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {}
+}

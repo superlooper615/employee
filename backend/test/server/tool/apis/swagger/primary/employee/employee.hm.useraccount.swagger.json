@@ -1,0 +1,451 @@
+{
+  "tags": [{
+    "name": "employeeHasManyuseraccount",
+    "description": "Everything about has many relation"
+  }],
+  "paths": {
+    "/api/v1/employee/has/useraccount": {
+      "get": {
+        "tags": [
+          "employeeHasManyuseraccount"
+        ],
+        "summary": "Get employee list with useraccount children",
+        "description": "",
+        "operationId": "employeeHasManyuseraccountList",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/employee/{employeeId}/useraccount": {
+      "get": {
+        "tags": [
+          "employeeHasManyuseraccount"
+        ],
+        "summary": "Find useraccount list by parent employee id",
+        "description": "Returns a single employee",
+        "operationId": "getuseraccountByemployeeId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "employeeId",
+            "in": "path",
+            "description": "ID of employee to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": "object"
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "employee not found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "employeeHasManyuseraccount"
+        ],
+        "summary": "Insert useraccount under a parent employee",
+        "description": "Returns a single employee",
+        "operationId": "insertuseraccountByemployeeId",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "body",
+            "name": "body",
+            "description": "useraccount object to insert",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "name": "employeeId",
+            "in": "path",
+            "description": "ID of employee to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/employee/{employeeId}/useraccount/{useraccountId}": {
+      "get": {
+        "tags": [
+          "employeeHasManyuseraccount"
+        ],
+        "summary": "Get by useraccount id parent employee id",
+        "description": "Returns a single employee",
+        "operationId": "getuseraccountByIdAndemployeeId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "employeeId",
+            "in": "path",
+            "description": "ID of parent employee",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "useraccountId",
+            "in": "path",
+            "description": "ID of useraccount",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": "object"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "employeeHasManyuseraccount"
+        ],
+        "summary": "Delete by useraccount id parent employee id",
+        "description": "Returns a single employee",
+        "operationId": "deleteuseraccountByIdAndemployeeId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "employeeId",
+            "in": "path",
+            "description": "ID of parent employee",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "useraccountId",
+            "in": "path",
+            "description": "ID of cuseraccount",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "employeeHasManyuseraccount"
+        ],
+        "summary": "Update useraccount under a parent employee",
+        "description": "Returns a single employee",
+        "operationId": "updateuseraccountByIdAndemployeeId",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "body",
+            "name": "body",
+            "description": "useraccount object to insert",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "name": "employeeId",
+            "in": "path",
+            "description": "ID of employee to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "useraccountId",
+            "in": "path",
+            "description": "ID of useraccount",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/employee/{employeeId}/useraccount/{useraccountId}/exists": {
+      "get": {
+        "tags": [
+          "employeeHasManyuseraccount"
+        ],
+        "summary": "Check row exists by useraccount id and parent employee id",
+        "description": "",
+        "operationId": "existsuseraccountByIdAndemployeeId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "employeeId",
+            "in": "path",
+            "description": "ID of parent employee",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "useraccountId",
+            "in": "path",
+            "description": "ID of useraccount",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/employee/{employeeId}/useraccount/findOne": {
+      "get": {
+        "tags": [
+          "employeeHasManyuseraccount"
+        ],
+        "summary": "Find one useraccount by parent employee id and filters",
+        "description": "",
+        "operationId": "findOneuseraccountByemployeeId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "employeeId",
+            "in": "path",
+            "description": "ID of parent employee",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/employee/{employeeId}/useraccount/count": {
+      "get": {
+        "tags": [
+          "employeeHasManyuseraccount"
+        ],
+        "summary": "Get useraccount count by parent id and filter",
+        "description": "",
+        "operationId": "getCountWithinemployeeId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "employeeId",
+            "in": "path",
+            "description": "ID of parent employee",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {}
+}

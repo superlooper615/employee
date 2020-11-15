@@ -1,0 +1,451 @@
+{
+  "tags": [{
+    "name": "scheduleHasManyemployeeschedule",
+    "description": "Everything about has many relation"
+  }],
+  "paths": {
+    "/api/v1/schedule/has/employeeschedule": {
+      "get": {
+        "tags": [
+          "scheduleHasManyemployeeschedule"
+        ],
+        "summary": "Get schedule list with employeeschedule children",
+        "description": "",
+        "operationId": "scheduleHasManyemployeescheduleList",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/schedule/{scheduleId}/employeeschedule": {
+      "get": {
+        "tags": [
+          "scheduleHasManyemployeeschedule"
+        ],
+        "summary": "Find employeeschedule list by parent schedule id",
+        "description": "Returns a single schedule",
+        "operationId": "getemployeescheduleByscheduleId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "scheduleId",
+            "in": "path",
+            "description": "ID of schedule to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": "object"
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "schedule not found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "scheduleHasManyemployeeschedule"
+        ],
+        "summary": "Insert employeeschedule under a parent schedule",
+        "description": "Returns a single schedule",
+        "operationId": "insertemployeescheduleByscheduleId",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "body",
+            "name": "body",
+            "description": "employeeschedule object to insert",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "name": "scheduleId",
+            "in": "path",
+            "description": "ID of schedule to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/schedule/{scheduleId}/employeeschedule/{employeescheduleId}": {
+      "get": {
+        "tags": [
+          "scheduleHasManyemployeeschedule"
+        ],
+        "summary": "Get by employeeschedule id parent schedule id",
+        "description": "Returns a single schedule",
+        "operationId": "getemployeescheduleByIdAndscheduleId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "scheduleId",
+            "in": "path",
+            "description": "ID of parent schedule",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "employeescheduleId",
+            "in": "path",
+            "description": "ID of employeeschedule",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": "object"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "scheduleHasManyemployeeschedule"
+        ],
+        "summary": "Delete by employeeschedule id parent schedule id",
+        "description": "Returns a single schedule",
+        "operationId": "deleteemployeescheduleByIdAndscheduleId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "scheduleId",
+            "in": "path",
+            "description": "ID of parent schedule",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "employeescheduleId",
+            "in": "path",
+            "description": "ID of cemployeeschedule",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "scheduleHasManyemployeeschedule"
+        ],
+        "summary": "Update employeeschedule under a parent schedule",
+        "description": "Returns a single schedule",
+        "operationId": "updateemployeescheduleByIdAndscheduleId",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "body",
+            "name": "body",
+            "description": "employeeschedule object to insert",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "name": "scheduleId",
+            "in": "path",
+            "description": "ID of schedule to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "employeescheduleId",
+            "in": "path",
+            "description": "ID of employeeschedule",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/schedule/{scheduleId}/employeeschedule/{employeescheduleId}/exists": {
+      "get": {
+        "tags": [
+          "scheduleHasManyemployeeschedule"
+        ],
+        "summary": "Check row exists by employeeschedule id and parent schedule id",
+        "description": "",
+        "operationId": "existsemployeescheduleByIdAndscheduleId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "scheduleId",
+            "in": "path",
+            "description": "ID of parent schedule",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "employeescheduleId",
+            "in": "path",
+            "description": "ID of employeeschedule",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/schedule/{scheduleId}/employeeschedule/findOne": {
+      "get": {
+        "tags": [
+          "scheduleHasManyemployeeschedule"
+        ],
+        "summary": "Find one employeeschedule by parent schedule id and filters",
+        "description": "",
+        "operationId": "findOneemployeescheduleByscheduleId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "scheduleId",
+            "in": "path",
+            "description": "ID of parent schedule",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/schedule/{scheduleId}/employeeschedule/count": {
+      "get": {
+        "tags": [
+          "scheduleHasManyemployeeschedule"
+        ],
+        "summary": "Get employeeschedule count by parent id and filter",
+        "description": "",
+        "operationId": "getCountWithinscheduleId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "scheduleId",
+            "in": "path",
+            "description": "ID of parent schedule",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {}
+}

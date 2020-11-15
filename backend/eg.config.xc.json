@@ -1,0 +1,52 @@
+ {
+  "title": "xc-rest",
+  "envs": {
+    "dev": {
+      "db": [
+        {
+          "client": "mysql",
+          "connection": {
+            "host": "localhost",
+            "port": "3306",
+            "user": "root",
+            "password": "password",
+            "database": "sakila"
+          },
+          "meta": {
+            "tableName": "_evolutions",
+            "dbAlias": "primary"
+          }
+        }
+      ],
+      "api" : {}
+    },"production": {
+      "db": [
+        {
+          "client": "mysql",
+          "connection": {
+            "host": "database-1.ca8liuydq5z6.us-east-2.rds.amazonaws.com",
+            "port": "3306",
+            "user": "root",
+            "password": "H7VM6mZzDPnGltpFQqD2",
+            "database": "sakila"
+          },
+          "meta": {
+            "tableName": "_evolutions",
+            "dbAlias": "primary"
+          }
+        }
+      ],
+      "api" : {}
+    }
+  },
+  "workingEnv": "dev",
+  "meta": {
+    "version": "0.5",
+    "seedsFolder": "seeds",
+    "queriesFolder": "queries",
+    "apisFolder": "apis",
+    "projectType": "rest"
+  },
+  "api": {}
+}
+

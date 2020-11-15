@@ -1,0 +1,451 @@
+{
+  "tags": [{
+    "name": "employeeHasManyboatrental",
+    "description": "Everything about has many relation"
+  }],
+  "paths": {
+    "/api/v1/employee/has/boatrental": {
+      "get": {
+        "tags": [
+          "employeeHasManyboatrental"
+        ],
+        "summary": "Get employee list with boatrental children",
+        "description": "",
+        "operationId": "employeeHasManyboatrentalList",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/employee/{employeeId}/boatrental": {
+      "get": {
+        "tags": [
+          "employeeHasManyboatrental"
+        ],
+        "summary": "Find boatrental list by parent employee id",
+        "description": "Returns a single employee",
+        "operationId": "getboatrentalByemployeeId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "employeeId",
+            "in": "path",
+            "description": "ID of employee to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": "object"
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "employee not found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "employeeHasManyboatrental"
+        ],
+        "summary": "Insert boatrental under a parent employee",
+        "description": "Returns a single employee",
+        "operationId": "insertboatrentalByemployeeId",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "body",
+            "name": "body",
+            "description": "boatrental object to insert",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "name": "employeeId",
+            "in": "path",
+            "description": "ID of employee to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/employee/{employeeId}/boatrental/{boatrentalId}": {
+      "get": {
+        "tags": [
+          "employeeHasManyboatrental"
+        ],
+        "summary": "Get by boatrental id parent employee id",
+        "description": "Returns a single employee",
+        "operationId": "getboatrentalByIdAndemployeeId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "employeeId",
+            "in": "path",
+            "description": "ID of parent employee",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "boatrentalId",
+            "in": "path",
+            "description": "ID of boatrental",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": "object"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "employeeHasManyboatrental"
+        ],
+        "summary": "Delete by boatrental id parent employee id",
+        "description": "Returns a single employee",
+        "operationId": "deleteboatrentalByIdAndemployeeId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "employeeId",
+            "in": "path",
+            "description": "ID of parent employee",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "boatrentalId",
+            "in": "path",
+            "description": "ID of cboatrental",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "employeeHasManyboatrental"
+        ],
+        "summary": "Update boatrental under a parent employee",
+        "description": "Returns a single employee",
+        "operationId": "updateboatrentalByIdAndemployeeId",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "body",
+            "name": "body",
+            "description": "boatrental object to insert",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "name": "employeeId",
+            "in": "path",
+            "description": "ID of employee to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "boatrentalId",
+            "in": "path",
+            "description": "ID of boatrental",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/employee/{employeeId}/boatrental/{boatrentalId}/exists": {
+      "get": {
+        "tags": [
+          "employeeHasManyboatrental"
+        ],
+        "summary": "Check row exists by boatrental id and parent employee id",
+        "description": "",
+        "operationId": "existsboatrentalByIdAndemployeeId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "employeeId",
+            "in": "path",
+            "description": "ID of parent employee",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "boatrentalId",
+            "in": "path",
+            "description": "ID of boatrental",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/employee/{employeeId}/boatrental/findOne": {
+      "get": {
+        "tags": [
+          "employeeHasManyboatrental"
+        ],
+        "summary": "Find one boatrental by parent employee id and filters",
+        "description": "",
+        "operationId": "findOneboatrentalByemployeeId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "employeeId",
+            "in": "path",
+            "description": "ID of parent employee",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/employee/{employeeId}/boatrental/count": {
+      "get": {
+        "tags": [
+          "employeeHasManyboatrental"
+        ],
+        "summary": "Get boatrental count by parent id and filter",
+        "description": "",
+        "operationId": "getCountWithinemployeeId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "employeeId",
+            "in": "path",
+            "description": "ID of parent employee",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {}
+}

@@ -1,0 +1,451 @@
+{
+  "tags": [{
+    "name": "employeestatusHasManyemployee",
+    "description": "Everything about has many relation"
+  }],
+  "paths": {
+    "/api/v1/employeestatus/has/employee": {
+      "get": {
+        "tags": [
+          "employeestatusHasManyemployee"
+        ],
+        "summary": "Get employeestatus list with employee children",
+        "description": "",
+        "operationId": "employeestatusHasManyemployeeList",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/employeestatus/{employeestatusId}/employee": {
+      "get": {
+        "tags": [
+          "employeestatusHasManyemployee"
+        ],
+        "summary": "Find employee list by parent employeestatus id",
+        "description": "Returns a single employeestatus",
+        "operationId": "getemployeeByemployeestatusId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "employeestatusId",
+            "in": "path",
+            "description": "ID of employeestatus to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": "object"
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "employeestatus not found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "employeestatusHasManyemployee"
+        ],
+        "summary": "Insert employee under a parent employeestatus",
+        "description": "Returns a single employeestatus",
+        "operationId": "insertemployeeByemployeestatusId",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "body",
+            "name": "body",
+            "description": "employee object to insert",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "name": "employeestatusId",
+            "in": "path",
+            "description": "ID of employeestatus to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/employeestatus/{employeestatusId}/employee/{employeeId}": {
+      "get": {
+        "tags": [
+          "employeestatusHasManyemployee"
+        ],
+        "summary": "Get by employee id parent employeestatus id",
+        "description": "Returns a single employeestatus",
+        "operationId": "getemployeeByIdAndemployeestatusId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "employeestatusId",
+            "in": "path",
+            "description": "ID of parent employeestatus",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "employeeId",
+            "in": "path",
+            "description": "ID of employee",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": "object"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "employeestatusHasManyemployee"
+        ],
+        "summary": "Delete by employee id parent employeestatus id",
+        "description": "Returns a single employeestatus",
+        "operationId": "deleteemployeeByIdAndemployeestatusId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "employeestatusId",
+            "in": "path",
+            "description": "ID of parent employeestatus",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "employeeId",
+            "in": "path",
+            "description": "ID of cemployee",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "employeestatusHasManyemployee"
+        ],
+        "summary": "Update employee under a parent employeestatus",
+        "description": "Returns a single employeestatus",
+        "operationId": "updateemployeeByIdAndemployeestatusId",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "body",
+            "name": "body",
+            "description": "employee object to insert",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "name": "employeestatusId",
+            "in": "path",
+            "description": "ID of employeestatus to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "employeeId",
+            "in": "path",
+            "description": "ID of employee",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/employeestatus/{employeestatusId}/employee/{employeeId}/exists": {
+      "get": {
+        "tags": [
+          "employeestatusHasManyemployee"
+        ],
+        "summary": "Check row exists by employee id and parent employeestatus id",
+        "description": "",
+        "operationId": "existsemployeeByIdAndemployeestatusId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "employeestatusId",
+            "in": "path",
+            "description": "ID of parent employeestatus",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "employeeId",
+            "in": "path",
+            "description": "ID of employee",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/employeestatus/{employeestatusId}/employee/findOne": {
+      "get": {
+        "tags": [
+          "employeestatusHasManyemployee"
+        ],
+        "summary": "Find one employee by parent employeestatus id and filters",
+        "description": "",
+        "operationId": "findOneemployeeByemployeestatusId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "employeestatusId",
+            "in": "path",
+            "description": "ID of parent employeestatus",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/employeestatus/{employeestatusId}/employee/count": {
+      "get": {
+        "tags": [
+          "employeestatusHasManyemployee"
+        ],
+        "summary": "Get employee count by parent id and filter",
+        "description": "",
+        "operationId": "getCountWithinemployeestatusId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "employeestatusId",
+            "in": "path",
+            "description": "ID of parent employeestatus",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {}
+}

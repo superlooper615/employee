@@ -1,0 +1,710 @@
+{
+  "tags": [{
+    "name": "employee",
+    "description": "Everything about your employee"
+  }],
+  "paths": {
+    "/api/v1/employee": {
+      "post": {
+        "tags": [
+          "employee"
+        ],
+        "summary": "Add a new employee",
+        "description": "",
+        "operationId": "addemployee",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+          "in": "body",
+          "name": "body",
+          "description": "employee object that needs to add",
+          "required": true,
+          "schema": {
+            "$ref": "#/definitions/employee"
+          }
+        }],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "employee"
+        ],
+        "summary": "Get list",
+        "description": "",
+        "operationId": "getemployee",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields from the model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "Page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "Pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "Comma seperated sort fields",
+            "type": "string"
+          }
+
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/api/v1/employee/{employeeId}": {
+      "get": {
+        "tags": [
+          "employee"
+        ],
+        "summary": "Find employee by ID",
+        "description": "Returns a single employee",
+        "operationId": "getemployeeById",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+          "name": "employeeId",
+          "in": "path",
+          "description": "ID of employee to return",
+          "required": true,
+          "type": "integer",
+          "format": "int64"
+        }],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/employee"
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "employee not found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "employee"
+        ],
+        "summary": "Updates a employee",
+        "description": "",
+        "operationId": "updateemployee",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "employeeId",
+            "in": "path",
+            "description": "ID of employee to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "employee object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/employee"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "employee"
+        ],
+        "summary": "Deletes a employee",
+        "description": "",
+        "operationId": "deleteemployee",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+          "name": "employeeId",
+          "in": "path",
+          "description": "ID of employee to return",
+          "required": true,
+          "type": "integer",
+          "format": "int64"
+        }],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "employee not found"
+          }
+        }
+      }
+    },
+
+
+    "/api/v1/employee/bulk": {
+      "post": {
+        "tags": [
+          "employee"
+        ],
+        "summary": "Bulk employee insert",
+        "description": "",
+        "operationId": "bulkemployeeInsert",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+          "in": "body",
+          "name": "body",
+          "description": "employee objects",
+          "required": true,
+          "schema": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/employee"
+            }
+          }
+        }],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "employee"
+        ],
+        "summary": "Updates a employee",
+        "description": "",
+        "operationId": "updateemployee",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+          "in": "body",
+          "name": "body",
+          "description": "employee objects with id",
+          "required": true,
+          "schema": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/employee"
+            }
+          }
+        }],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "employee"
+        ],
+        "summary": "Deletes a employee",
+        "description": "",
+        "operationId": "deleteemployee",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+          "in": "body",
+          "name": "body",
+          "description": "employee objects contains id",
+          "required": true,
+          "schema": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/employee"
+            }
+          }
+        }],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "employee not found"
+          }
+        }
+      }
+    },
+    "/api/v1/employee/findOne": {
+      "get": {
+        "tags": [
+          "employee"
+        ],
+        "summary": "Get first one from filtered data",
+        "description": "",
+        "operationId": "findOneemployee",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields from the model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "Page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "Pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "Comma seperated sort fieldst",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          },
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/employee"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/employee/{employeeId}/exists": {
+      "get": {
+        "tags": [
+          "employee"
+        ],
+        "summary": "Check employee with provided ID exists",
+        "description": "Returns a single employee",
+        "operationId": "checkemployeeExists",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+          "name": "employeeId",
+          "in": "path",
+          "description": "ID of employee",
+          "required": true,
+          "type": "integer",
+          "format": "int64"
+        }],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/employee/count": {
+      "get": {
+        "tags": [
+          "employee"
+        ],
+        "summary": "Get employee count",
+        "operationId": "getemployeeCount",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+          "in": "query",
+          "name": "where",
+          "type": "String",
+          "description": "Where expression"
+        }],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          },
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/employee/groupby/{columnName}": {
+      "get": {
+        "tags": [
+          "employee"
+        ],
+        "summary": "Group by column",
+        "description": "",
+        "operationId": "employeeGroupByColumn",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "path",
+            "name": "columnName",
+            "type": "String",
+            "description": "Column name"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "Page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "Pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "Comma seperated sort fieldst",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          },
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/employee"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/employee/distribution/{columnName}": {
+      "get": {
+        "tags": [
+          "employee"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "employeeDistribution",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+          "in": "path",
+          "name": "columnName",
+          "type": "String",
+          "description": "Column name"
+        }, {
+          "in": "query",
+          "name": "min",
+          "description": "min value",
+          "type": "integer",
+          "format": "int64"
+        }, {
+          "in": "query",
+          "name": "max",
+          "description": "max value",
+          "type": "integer",
+          "format": "int64"
+        }, {
+          "in": "query",
+          "name": "step",
+          "description": "step value",
+          "type": "integer",
+          "format": "int64"
+        }, {
+          "in": "query",
+          "name": "steps",
+          "description": "steps value",
+          "type": "integer",
+          "format": "int64"
+        }, {
+          "in": "query",
+          "name": "func",
+          "description": "comma separated aggregation functions",
+          "type": "string"
+        }],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          },
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/employee/distinct/{columnName}": {
+      "get": {
+        "tags": [
+          "employee"
+        ],
+        "summary": "Get first one from filtered data",
+        "description": "",
+        "operationId": "employeeDistinct",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "path",
+            "name": "columnName",
+            "type": "String",
+            "description": "Column name"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "Page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "Pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "Comma seperated sort fieldst",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          },
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/employee/aggregate/{columnName}": {
+      "get": {
+        "tags": [
+          "employee"
+        ],
+        "summary": "Get first one from filtered data",
+        "description": "",
+        "operationId": "employeeAggregate",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "path",
+            "name": "columnName",
+            "type": "String",
+            "description": "Column name"
+          },
+          {
+            "in": "path",
+            "name": "fields",
+            "type": "String",
+            "description": "Column name"
+          },
+          {
+            "in": "path",
+            "name": "func",
+            "type": "String",
+            "description": "Comma seperated aggregate functions"
+          },
+          {
+            "in": "query",
+            "name": "having",
+            "type": "String",
+            "description": "Having expression"
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields from the model"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "Page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "Pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "Comma seperated sort fields",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          },
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/employee"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "employee": {
+      "type": "object",
+      "properties": {
+        "employeeId": {
+          "type": "integer",
+          "nullable": false
+        },
+        "firstName": {
+          "type": "string",
+          "nullable": false
+        },
+        "lastName": {
+          "type": "string",
+          "nullable": false
+        },
+        "email": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "employeeTypeId": {
+          "type": "integer",
+          "nullable": false
+        },
+        "employeeStatusId": {
+          "type": "integer",
+          "nullable": false
+        }
+      }
+    }
+  }
+}

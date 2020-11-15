@@ -1,0 +1,38 @@
+{
+  "title": "Employee_management",
+  "apiClient": {
+    "data": []
+  },
+  "envs": {
+    "dev": {
+      "db": [
+        {
+          "client": "mysql",
+          "connection": {
+            "host": "cis4375.mysql.database.azure.com",
+            "port": "3306",
+            "user": "cis_admin@cis4375",
+            "password": "rootuser;23",
+            "database": "diversitechnologies",
+            "multipleStatements": true
+          },
+          "meta": {
+            "tableName": "_evolutions",
+            "dbAlias": "primary"
+          }
+        }
+      ],
+      "apiClient": {
+        "data": []
+      }
+    }
+  },
+  "workingEnv": "dev",
+  "meta": {
+    "version": "0.5",
+    "seedsFolder": "seeds",
+    "queriesFolder": "queries",
+    "apisFolder": "apis",
+    "projectType": "rest"
+  }
+}

@@ -1,0 +1,451 @@
+{
+  "tags": [{
+    "name": "customerHasManyboatrental",
+    "description": "Everything about has many relation"
+  }],
+  "paths": {
+    "/api/v1/customer/has/boatrental": {
+      "get": {
+        "tags": [
+          "customerHasManyboatrental"
+        ],
+        "summary": "Get customer list with boatrental children",
+        "description": "",
+        "operationId": "customerHasManyboatrentalList",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/customer/{customerId}/boatrental": {
+      "get": {
+        "tags": [
+          "customerHasManyboatrental"
+        ],
+        "summary": "Find boatrental list by parent customer id",
+        "description": "Returns a single customer",
+        "operationId": "getboatrentalBycustomerId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "customerId",
+            "in": "path",
+            "description": "ID of customer to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": "object"
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "customer not found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "customerHasManyboatrental"
+        ],
+        "summary": "Insert boatrental under a parent customer",
+        "description": "Returns a single customer",
+        "operationId": "insertboatrentalBycustomerId",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "body",
+            "name": "body",
+            "description": "boatrental object to insert",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "name": "customerId",
+            "in": "path",
+            "description": "ID of customer to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/customer/{customerId}/boatrental/{boatrentalId}": {
+      "get": {
+        "tags": [
+          "customerHasManyboatrental"
+        ],
+        "summary": "Get by boatrental id parent customer id",
+        "description": "Returns a single customer",
+        "operationId": "getboatrentalByIdAndcustomerId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "customerId",
+            "in": "path",
+            "description": "ID of parent customer",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "boatrentalId",
+            "in": "path",
+            "description": "ID of boatrental",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": "object"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "customerHasManyboatrental"
+        ],
+        "summary": "Delete by boatrental id parent customer id",
+        "description": "Returns a single customer",
+        "operationId": "deleteboatrentalByIdAndcustomerId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "customerId",
+            "in": "path",
+            "description": "ID of parent customer",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "boatrentalId",
+            "in": "path",
+            "description": "ID of cboatrental",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "customerHasManyboatrental"
+        ],
+        "summary": "Update boatrental under a parent customer",
+        "description": "Returns a single customer",
+        "operationId": "updateboatrentalByIdAndcustomerId",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "body",
+            "name": "body",
+            "description": "boatrental object to insert",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "name": "customerId",
+            "in": "path",
+            "description": "ID of customer to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "boatrentalId",
+            "in": "path",
+            "description": "ID of boatrental",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/customer/{customerId}/boatrental/{boatrentalId}/exists": {
+      "get": {
+        "tags": [
+          "customerHasManyboatrental"
+        ],
+        "summary": "Check row exists by boatrental id and parent customer id",
+        "description": "",
+        "operationId": "existsboatrentalByIdAndcustomerId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "customerId",
+            "in": "path",
+            "description": "ID of parent customer",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "boatrentalId",
+            "in": "path",
+            "description": "ID of boatrental",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/customer/{customerId}/boatrental/findOne": {
+      "get": {
+        "tags": [
+          "customerHasManyboatrental"
+        ],
+        "summary": "Find one boatrental by parent customer id and filters",
+        "description": "",
+        "operationId": "findOneboatrentalBycustomerId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "customerId",
+            "in": "path",
+            "description": "ID of parent customer",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/customer/{customerId}/boatrental/count": {
+      "get": {
+        "tags": [
+          "customerHasManyboatrental"
+        ],
+        "summary": "Get boatrental count by parent id and filter",
+        "description": "",
+        "operationId": "getCountWithincustomerId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "customerId",
+            "in": "path",
+            "description": "ID of parent customer",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {}
+}

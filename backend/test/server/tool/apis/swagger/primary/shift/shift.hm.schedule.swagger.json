@@ -1,0 +1,451 @@
+{
+  "tags": [{
+    "name": "shiftHasManyschedule",
+    "description": "Everything about has many relation"
+  }],
+  "paths": {
+    "/api/v1/shift/has/schedule": {
+      "get": {
+        "tags": [
+          "shiftHasManyschedule"
+        ],
+        "summary": "Get shift list with schedule children",
+        "description": "",
+        "operationId": "shiftHasManyscheduleList",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/shift/{shiftId}/schedule": {
+      "get": {
+        "tags": [
+          "shiftHasManyschedule"
+        ],
+        "summary": "Find schedule list by parent shift id",
+        "description": "Returns a single shift",
+        "operationId": "getscheduleByshiftId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "shiftId",
+            "in": "path",
+            "description": "ID of shift to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": "object"
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "shift not found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "shiftHasManyschedule"
+        ],
+        "summary": "Insert schedule under a parent shift",
+        "description": "Returns a single shift",
+        "operationId": "insertscheduleByshiftId",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "body",
+            "name": "body",
+            "description": "schedule object to insert",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "name": "shiftId",
+            "in": "path",
+            "description": "ID of shift to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/shift/{shiftId}/schedule/{scheduleId}": {
+      "get": {
+        "tags": [
+          "shiftHasManyschedule"
+        ],
+        "summary": "Get by schedule id parent shift id",
+        "description": "Returns a single shift",
+        "operationId": "getscheduleByIdAndshiftId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "shiftId",
+            "in": "path",
+            "description": "ID of parent shift",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "scheduleId",
+            "in": "path",
+            "description": "ID of schedule",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": "object"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "shiftHasManyschedule"
+        ],
+        "summary": "Delete by schedule id parent shift id",
+        "description": "Returns a single shift",
+        "operationId": "deletescheduleByIdAndshiftId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "shiftId",
+            "in": "path",
+            "description": "ID of parent shift",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "scheduleId",
+            "in": "path",
+            "description": "ID of cschedule",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "shiftHasManyschedule"
+        ],
+        "summary": "Update schedule under a parent shift",
+        "description": "Returns a single shift",
+        "operationId": "updatescheduleByIdAndshiftId",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "body",
+            "name": "body",
+            "description": "schedule object to insert",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "name": "shiftId",
+            "in": "path",
+            "description": "ID of shift to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "scheduleId",
+            "in": "path",
+            "description": "ID of schedule",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/shift/{shiftId}/schedule/{scheduleId}/exists": {
+      "get": {
+        "tags": [
+          "shiftHasManyschedule"
+        ],
+        "summary": "Check row exists by schedule id and parent shift id",
+        "description": "",
+        "operationId": "existsscheduleByIdAndshiftId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "shiftId",
+            "in": "path",
+            "description": "ID of parent shift",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "scheduleId",
+            "in": "path",
+            "description": "ID of schedule",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/shift/{shiftId}/schedule/findOne": {
+      "get": {
+        "tags": [
+          "shiftHasManyschedule"
+        ],
+        "summary": "Find one schedule by parent shift id and filters",
+        "description": "",
+        "operationId": "findOnescheduleByshiftId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "shiftId",
+            "in": "path",
+            "description": "ID of parent shift",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/shift/{shiftId}/schedule/count": {
+      "get": {
+        "tags": [
+          "shiftHasManyschedule"
+        ],
+        "summary": "Get schedule count by parent id and filter",
+        "description": "",
+        "operationId": "getCountWithinshiftId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "shiftId",
+            "in": "path",
+            "description": "ID of parent shift",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {}
+}

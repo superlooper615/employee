@@ -1,0 +1,703 @@
+{
+  "tags": [{
+    "name": "vacation",
+    "description": "Everything about your vacation"
+  }],
+  "paths": {
+    "/api/v1/vacation": {
+      "post": {
+        "tags": [
+          "vacation"
+        ],
+        "summary": "Add a new vacation",
+        "description": "",
+        "operationId": "addvacation",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+          "in": "body",
+          "name": "body",
+          "description": "vacation object that needs to add",
+          "required": true,
+          "schema": {
+            "$ref": "#/definitions/vacation"
+          }
+        }],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "vacation"
+        ],
+        "summary": "Get list",
+        "description": "",
+        "operationId": "getvacation",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields from the model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "Page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "Pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "Comma seperated sort fields",
+            "type": "string"
+          }
+
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/api/v1/vacation/{vacationId}": {
+      "get": {
+        "tags": [
+          "vacation"
+        ],
+        "summary": "Find vacation by ID",
+        "description": "Returns a single vacation",
+        "operationId": "getvacationById",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+          "name": "vacationId",
+          "in": "path",
+          "description": "ID of vacation to return",
+          "required": true,
+          "type": "integer",
+          "format": "int64"
+        }],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/vacation"
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "vacation not found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "vacation"
+        ],
+        "summary": "Updates a vacation",
+        "description": "",
+        "operationId": "updatevacation",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "vacationId",
+            "in": "path",
+            "description": "ID of vacation to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "vacation object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/vacation"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "vacation"
+        ],
+        "summary": "Deletes a vacation",
+        "description": "",
+        "operationId": "deletevacation",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+          "name": "vacationId",
+          "in": "path",
+          "description": "ID of vacation to return",
+          "required": true,
+          "type": "integer",
+          "format": "int64"
+        }],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "vacation not found"
+          }
+        }
+      }
+    },
+
+
+    "/api/v1/vacation/bulk": {
+      "post": {
+        "tags": [
+          "vacation"
+        ],
+        "summary": "Bulk vacation insert",
+        "description": "",
+        "operationId": "bulkvacationInsert",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+          "in": "body",
+          "name": "body",
+          "description": "vacation objects",
+          "required": true,
+          "schema": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/vacation"
+            }
+          }
+        }],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "vacation"
+        ],
+        "summary": "Updates a vacation",
+        "description": "",
+        "operationId": "updatevacation",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+          "in": "body",
+          "name": "body",
+          "description": "vacation objects with id",
+          "required": true,
+          "schema": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/vacation"
+            }
+          }
+        }],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "vacation"
+        ],
+        "summary": "Deletes a vacation",
+        "description": "",
+        "operationId": "deletevacation",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+          "in": "body",
+          "name": "body",
+          "description": "vacation objects contains id",
+          "required": true,
+          "schema": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/vacation"
+            }
+          }
+        }],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "vacation not found"
+          }
+        }
+      }
+    },
+    "/api/v1/vacation/findOne": {
+      "get": {
+        "tags": [
+          "vacation"
+        ],
+        "summary": "Get first one from filtered data",
+        "description": "",
+        "operationId": "findOnevacation",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields from the model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "Page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "Pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "Comma seperated sort fieldst",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          },
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/vacation"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/vacation/{vacationId}/exists": {
+      "get": {
+        "tags": [
+          "vacation"
+        ],
+        "summary": "Check vacation with provided ID exists",
+        "description": "Returns a single vacation",
+        "operationId": "checkvacationExists",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+          "name": "vacationId",
+          "in": "path",
+          "description": "ID of vacation",
+          "required": true,
+          "type": "integer",
+          "format": "int64"
+        }],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/vacation/count": {
+      "get": {
+        "tags": [
+          "vacation"
+        ],
+        "summary": "Get vacation count",
+        "operationId": "getvacationCount",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+          "in": "query",
+          "name": "where",
+          "type": "String",
+          "description": "Where expression"
+        }],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          },
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/vacation/groupby/{columnName}": {
+      "get": {
+        "tags": [
+          "vacation"
+        ],
+        "summary": "Group by column",
+        "description": "",
+        "operationId": "vacationGroupByColumn",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "path",
+            "name": "columnName",
+            "type": "String",
+            "description": "Column name"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "Page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "Pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "Comma seperated sort fieldst",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          },
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/vacation"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/vacation/distribution/{columnName}": {
+      "get": {
+        "tags": [
+          "vacation"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "vacationDistribution",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+          "in": "path",
+          "name": "columnName",
+          "type": "String",
+          "description": "Column name"
+        }, {
+          "in": "query",
+          "name": "min",
+          "description": "min value",
+          "type": "integer",
+          "format": "int64"
+        }, {
+          "in": "query",
+          "name": "max",
+          "description": "max value",
+          "type": "integer",
+          "format": "int64"
+        }, {
+          "in": "query",
+          "name": "step",
+          "description": "step value",
+          "type": "integer",
+          "format": "int64"
+        }, {
+          "in": "query",
+          "name": "steps",
+          "description": "steps value",
+          "type": "integer",
+          "format": "int64"
+        }, {
+          "in": "query",
+          "name": "func",
+          "description": "comma separated aggregation functions",
+          "type": "string"
+        }],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          },
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/vacation/distinct/{columnName}": {
+      "get": {
+        "tags": [
+          "vacation"
+        ],
+        "summary": "Get first one from filtered data",
+        "description": "",
+        "operationId": "vacationDistinct",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "path",
+            "name": "columnName",
+            "type": "String",
+            "description": "Column name"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "Page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "Pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "Comma seperated sort fieldst",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          },
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/vacation/aggregate/{columnName}": {
+      "get": {
+        "tags": [
+          "vacation"
+        ],
+        "summary": "Get first one from filtered data",
+        "description": "",
+        "operationId": "vacationAggregate",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "path",
+            "name": "columnName",
+            "type": "String",
+            "description": "Column name"
+          },
+          {
+            "in": "path",
+            "name": "fields",
+            "type": "String",
+            "description": "Column name"
+          },
+          {
+            "in": "path",
+            "name": "func",
+            "type": "String",
+            "description": "Comma seperated aggregate functions"
+          },
+          {
+            "in": "query",
+            "name": "having",
+            "type": "String",
+            "description": "Having expression"
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields from the model"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "Page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "Pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "Comma seperated sort fields",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          },
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/vacation"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "vacation": {
+      "type": "object",
+      "properties": {
+        "vacationId": {
+          "type": "integer",
+          "nullable": false
+        },
+        "employeeId": {
+          "type": "integer",
+          "nullable": false
+        },
+        "vacationTypeId": {
+          "type": "integer",
+          "nullable": false
+        },
+        "vacationStatusId": {
+          "type": "integer",
+          "nullable": false
+        },
+        "vacationStartDate": {
+          "type": "string"
+        },
+        "vacationEndDate": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,451 @@
+{
+  "tags": [{
+    "name": "vacationstatusHasManyvacation",
+    "description": "Everything about has many relation"
+  }],
+  "paths": {
+    "/api/v1/vacationstatus/has/vacation": {
+      "get": {
+        "tags": [
+          "vacationstatusHasManyvacation"
+        ],
+        "summary": "Get vacationstatus list with vacation children",
+        "description": "",
+        "operationId": "vacationstatusHasManyvacationList",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/vacationstatus/{vacationstatusId}/vacation": {
+      "get": {
+        "tags": [
+          "vacationstatusHasManyvacation"
+        ],
+        "summary": "Find vacation list by parent vacationstatus id",
+        "description": "Returns a single vacationstatus",
+        "operationId": "getvacationByvacationstatusId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "vacationstatusId",
+            "in": "path",
+            "description": "ID of vacationstatus to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": "object"
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "vacationstatus not found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "vacationstatusHasManyvacation"
+        ],
+        "summary": "Insert vacation under a parent vacationstatus",
+        "description": "Returns a single vacationstatus",
+        "operationId": "insertvacationByvacationstatusId",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "body",
+            "name": "body",
+            "description": "vacation object to insert",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "name": "vacationstatusId",
+            "in": "path",
+            "description": "ID of vacationstatus to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/vacationstatus/{vacationstatusId}/vacation/{vacationId}": {
+      "get": {
+        "tags": [
+          "vacationstatusHasManyvacation"
+        ],
+        "summary": "Get by vacation id parent vacationstatus id",
+        "description": "Returns a single vacationstatus",
+        "operationId": "getvacationByIdAndvacationstatusId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "vacationstatusId",
+            "in": "path",
+            "description": "ID of parent vacationstatus",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "vacationId",
+            "in": "path",
+            "description": "ID of vacation",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": "object"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "vacationstatusHasManyvacation"
+        ],
+        "summary": "Delete by vacation id parent vacationstatus id",
+        "description": "Returns a single vacationstatus",
+        "operationId": "deletevacationByIdAndvacationstatusId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "vacationstatusId",
+            "in": "path",
+            "description": "ID of parent vacationstatus",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "vacationId",
+            "in": "path",
+            "description": "ID of cvacation",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "vacationstatusHasManyvacation"
+        ],
+        "summary": "Update vacation under a parent vacationstatus",
+        "description": "Returns a single vacationstatus",
+        "operationId": "updatevacationByIdAndvacationstatusId",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "body",
+            "name": "body",
+            "description": "vacation object to insert",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "name": "vacationstatusId",
+            "in": "path",
+            "description": "ID of vacationstatus to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "vacationId",
+            "in": "path",
+            "description": "ID of vacation",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/vacationstatus/{vacationstatusId}/vacation/{vacationId}/exists": {
+      "get": {
+        "tags": [
+          "vacationstatusHasManyvacation"
+        ],
+        "summary": "Check row exists by vacation id and parent vacationstatus id",
+        "description": "",
+        "operationId": "existsvacationByIdAndvacationstatusId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "vacationstatusId",
+            "in": "path",
+            "description": "ID of parent vacationstatus",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "vacationId",
+            "in": "path",
+            "description": "ID of vacation",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/vacationstatus/{vacationstatusId}/vacation/findOne": {
+      "get": {
+        "tags": [
+          "vacationstatusHasManyvacation"
+        ],
+        "summary": "Find one vacation by parent vacationstatus id and filters",
+        "description": "",
+        "operationId": "findOnevacationByvacationstatusId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "vacationstatusId",
+            "in": "path",
+            "description": "ID of parent vacationstatus",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/vacationstatus/{vacationstatusId}/vacation/count": {
+      "get": {
+        "tags": [
+          "vacationstatusHasManyvacation"
+        ],
+        "summary": "Get vacation count by parent id and filter",
+        "description": "",
+        "operationId": "getCountWithinvacationstatusId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "vacationstatusId",
+            "in": "path",
+            "description": "ID of parent vacationstatus",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {}
+}

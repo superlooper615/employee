@@ -1,0 +1,451 @@
+{
+  "tags": [{
+    "name": "employeetypeHasManyemployee",
+    "description": "Everything about has many relation"
+  }],
+  "paths": {
+    "/api/v1/employeetype/has/employee": {
+      "get": {
+        "tags": [
+          "employeetypeHasManyemployee"
+        ],
+        "summary": "Get employeetype list with employee children",
+        "description": "",
+        "operationId": "employeetypeHasManyemployeeList",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/employeetype/{employeetypeId}/employee": {
+      "get": {
+        "tags": [
+          "employeetypeHasManyemployee"
+        ],
+        "summary": "Find employee list by parent employeetype id",
+        "description": "Returns a single employeetype",
+        "operationId": "getemployeeByemployeetypeId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "employeetypeId",
+            "in": "path",
+            "description": "ID of employeetype to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": "object"
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "employeetype not found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "employeetypeHasManyemployee"
+        ],
+        "summary": "Insert employee under a parent employeetype",
+        "description": "Returns a single employeetype",
+        "operationId": "insertemployeeByemployeetypeId",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "body",
+            "name": "body",
+            "description": "employee object to insert",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "name": "employeetypeId",
+            "in": "path",
+            "description": "ID of employeetype to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/employeetype/{employeetypeId}/employee/{employeeId}": {
+      "get": {
+        "tags": [
+          "employeetypeHasManyemployee"
+        ],
+        "summary": "Get by employee id parent employeetype id",
+        "description": "Returns a single employeetype",
+        "operationId": "getemployeeByIdAndemployeetypeId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "employeetypeId",
+            "in": "path",
+            "description": "ID of parent employeetype",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "employeeId",
+            "in": "path",
+            "description": "ID of employee",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": "object"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "employeetypeHasManyemployee"
+        ],
+        "summary": "Delete by employee id parent employeetype id",
+        "description": "Returns a single employeetype",
+        "operationId": "deleteemployeeByIdAndemployeetypeId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "employeetypeId",
+            "in": "path",
+            "description": "ID of parent employeetype",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "employeeId",
+            "in": "path",
+            "description": "ID of cemployee",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "employeetypeHasManyemployee"
+        ],
+        "summary": "Update employee under a parent employeetype",
+        "description": "Returns a single employeetype",
+        "operationId": "updateemployeeByIdAndemployeetypeId",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "body",
+            "name": "body",
+            "description": "employee object to insert",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "name": "employeetypeId",
+            "in": "path",
+            "description": "ID of employeetype to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "employeeId",
+            "in": "path",
+            "description": "ID of employee",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/employeetype/{employeetypeId}/employee/{employeeId}/exists": {
+      "get": {
+        "tags": [
+          "employeetypeHasManyemployee"
+        ],
+        "summary": "Check row exists by employee id and parent employeetype id",
+        "description": "",
+        "operationId": "existsemployeeByIdAndemployeetypeId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "employeetypeId",
+            "in": "path",
+            "description": "ID of parent employeetype",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "employeeId",
+            "in": "path",
+            "description": "ID of employee",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/employeetype/{employeetypeId}/employee/findOne": {
+      "get": {
+        "tags": [
+          "employeetypeHasManyemployee"
+        ],
+        "summary": "Find one employee by parent employeetype id and filters",
+        "description": "",
+        "operationId": "findOneemployeeByemployeetypeId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "employeetypeId",
+            "in": "path",
+            "description": "ID of parent employeetype",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields of model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/employeetype/{employeetypeId}/employee/count": {
+      "get": {
+        "tags": [
+          "employeetypeHasManyemployee"
+        ],
+        "summary": "Get employee count by parent id and filter",
+        "description": "",
+        "operationId": "getCountWithinemployeetypeId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "employeetypeId",
+            "in": "path",
+            "description": "ID of parent employeetype",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "sort parameter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {}
+}

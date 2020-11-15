@@ -1,0 +1,716 @@
+{
+  "tags": [{
+    "name": "boatrental",
+    "description": "Everything about your boatrental"
+  }],
+  "paths": {
+    "/api/v1/boatrental": {
+      "post": {
+        "tags": [
+          "boatrental"
+        ],
+        "summary": "Add a new boatrental",
+        "description": "",
+        "operationId": "addboatrental",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+          "in": "body",
+          "name": "body",
+          "description": "boatrental object that needs to add",
+          "required": true,
+          "schema": {
+            "$ref": "#/definitions/boatrental"
+          }
+        }],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "boatrental"
+        ],
+        "summary": "Get list",
+        "description": "",
+        "operationId": "getboatrental",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields from the model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "Page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "Pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "Comma seperated sort fields",
+            "type": "string"
+          }
+
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/api/v1/boatrental/{boatrentalId}": {
+      "get": {
+        "tags": [
+          "boatrental"
+        ],
+        "summary": "Find boatrental by ID",
+        "description": "Returns a single boatrental",
+        "operationId": "getboatrentalById",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+          "name": "boatrentalId",
+          "in": "path",
+          "description": "ID of boatrental to return",
+          "required": true,
+          "type": "integer",
+          "format": "int64"
+        }],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/boatrental"
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "boatrental not found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "boatrental"
+        ],
+        "summary": "Updates a boatrental",
+        "description": "",
+        "operationId": "updateboatrental",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "name": "boatrentalId",
+            "in": "path",
+            "description": "ID of boatrental to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "boatrental object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/boatrental"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "boatrental"
+        ],
+        "summary": "Deletes a boatrental",
+        "description": "",
+        "operationId": "deleteboatrental",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+          "name": "boatrentalId",
+          "in": "path",
+          "description": "ID of boatrental to return",
+          "required": true,
+          "type": "integer",
+          "format": "int64"
+        }],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "boatrental not found"
+          }
+        }
+      }
+    },
+
+
+    "/api/v1/boatrental/bulk": {
+      "post": {
+        "tags": [
+          "boatrental"
+        ],
+        "summary": "Bulk boatrental insert",
+        "description": "",
+        "operationId": "bulkboatrentalInsert",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+          "in": "body",
+          "name": "body",
+          "description": "boatrental objects",
+          "required": true,
+          "schema": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/boatrental"
+            }
+          }
+        }],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "boatrental"
+        ],
+        "summary": "Updates a boatrental",
+        "description": "",
+        "operationId": "updateboatrental",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+          "in": "body",
+          "name": "body",
+          "description": "boatrental objects with id",
+          "required": true,
+          "schema": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/boatrental"
+            }
+          }
+        }],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "boatrental"
+        ],
+        "summary": "Deletes a boatrental",
+        "description": "",
+        "operationId": "deleteboatrental",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+          "in": "body",
+          "name": "body",
+          "description": "boatrental objects contains id",
+          "required": true,
+          "schema": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/boatrental"
+            }
+          }
+        }],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "boatrental not found"
+          }
+        }
+      }
+    },
+    "/api/v1/boatrental/findOne": {
+      "get": {
+        "tags": [
+          "boatrental"
+        ],
+        "summary": "Get first one from filtered data",
+        "description": "",
+        "operationId": "findOneboatrental",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields from the model"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "Page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "Pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "Comma seperated sort fieldst",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          },
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/boatrental"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/boatrental/{boatrentalId}/exists": {
+      "get": {
+        "tags": [
+          "boatrental"
+        ],
+        "summary": "Check boatrental with provided ID exists",
+        "description": "Returns a single boatrental",
+        "operationId": "checkboatrentalExists",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+          "name": "boatrentalId",
+          "in": "path",
+          "description": "ID of boatrental",
+          "required": true,
+          "type": "integer",
+          "format": "int64"
+        }],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/boatrental/count": {
+      "get": {
+        "tags": [
+          "boatrental"
+        ],
+        "summary": "Get boatrental count",
+        "operationId": "getboatrentalCount",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+          "in": "query",
+          "name": "where",
+          "type": "String",
+          "description": "Where expression"
+        }],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          },
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/boatrental/groupby/{columnName}": {
+      "get": {
+        "tags": [
+          "boatrental"
+        ],
+        "summary": "Group by column",
+        "description": "",
+        "operationId": "boatrentalGroupByColumn",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "path",
+            "name": "columnName",
+            "type": "String",
+            "description": "Column name"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "Page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "Pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "Comma seperated sort fieldst",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          },
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/boatrental"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/boatrental/distribution/{columnName}": {
+      "get": {
+        "tags": [
+          "boatrental"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "boatrentalDistribution",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+          "in": "path",
+          "name": "columnName",
+          "type": "String",
+          "description": "Column name"
+        }, {
+          "in": "query",
+          "name": "min",
+          "description": "min value",
+          "type": "integer",
+          "format": "int64"
+        }, {
+          "in": "query",
+          "name": "max",
+          "description": "max value",
+          "type": "integer",
+          "format": "int64"
+        }, {
+          "in": "query",
+          "name": "step",
+          "description": "step value",
+          "type": "integer",
+          "format": "int64"
+        }, {
+          "in": "query",
+          "name": "steps",
+          "description": "steps value",
+          "type": "integer",
+          "format": "int64"
+        }, {
+          "in": "query",
+          "name": "func",
+          "description": "comma separated aggregation functions",
+          "type": "string"
+        }],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          },
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/boatrental/distinct/{columnName}": {
+      "get": {
+        "tags": [
+          "boatrental"
+        ],
+        "summary": "Get first one from filtered data",
+        "description": "",
+        "operationId": "boatrentalDistinct",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "path",
+            "name": "columnName",
+            "type": "String",
+            "description": "Column name"
+          },
+          {
+            "in": "query",
+            "name": "where",
+            "type": "String",
+            "description": "Where expression"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "Page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "Pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "Comma seperated sort fieldst",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          },
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/boatrental/aggregate/{columnName}": {
+      "get": {
+        "tags": [
+          "boatrental"
+        ],
+        "summary": "Get first one from filtered data",
+        "description": "",
+        "operationId": "boatrentalAggregate",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+            "in": "path",
+            "name": "columnName",
+            "type": "String",
+            "description": "Column name"
+          },
+          {
+            "in": "path",
+            "name": "fields",
+            "type": "String",
+            "description": "Column name"
+          },
+          {
+            "in": "path",
+            "name": "func",
+            "type": "String",
+            "description": "Comma seperated aggregate functions"
+          },
+          {
+            "in": "query",
+            "name": "having",
+            "type": "String",
+            "description": "Having expression"
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "type": "String",
+            "description": "Comma seperated fields from the model"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "Page size limit",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "Pagination offset",
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "Comma seperated sort fields",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          },
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/boatrental"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "boatrental": {
+      "type": "object",
+      "properties": {
+        "boatRentalId": {
+          "type": "integer",
+          "nullable": false
+        },
+        "boatRentalStatusId": {
+          "type": "integer",
+          "nullable": false
+        },
+        "boatId": {
+          "type": "integer",
+          "nullable": false
+        },
+        "employeeId": {
+          "type": "integer",
+          "nullable": false
+        },
+        "customerId": {
+          "type": "integer",
+          "nullable": false
+        },
+        "bookingDate": {
+          "type": "string"
+        },
+        "bookingTime": {
+          "type": "string"
+        },
+        "passengers": {
+          "type": "integer"
+        },
+        "requestedCoolers": {
+          "type": "integer"
+        },
+        "specialNotes": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
